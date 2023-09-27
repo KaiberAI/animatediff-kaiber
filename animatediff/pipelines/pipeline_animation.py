@@ -756,25 +756,22 @@ class AnimationPipeline(DiffusionPipeline):
             trained_initial_frames_input = trained_initial_frames
         elif trained_initial_frames_input_path != None:
             pil_im = Image.open(trained_initial_frames_input_path).resize((width, height))
-            pil_im.save("test.png")
             pixel_values = torchvision.transforms.functional.pil_to_tensor(pil_im)[:3, :, :].unsqueeze(0).to(self.vae.device, dtype=self.vae.dtype) / 255
-            # Turn 0 into 255
 
             pixel_values = pixel_values.mul(2).sub(1)
-            
-            # Flip pixel values from -1 to 1
 
             val_init_latents = self.vae.encode(pixel_values).latent_dist
             val_init_latents = val_init_latents.sample()
             trained_initial_frames_input = val_init_latents * 0.18215
             trained_initial_frames_input = trained_initial_frames_input.unsqueeze(2).repeat(repeater, 1, latents.shape[2], 1, 1)
-            print(trained_initial_frames_input.shape)
             
             trained_initial_frames_input[:, :, 1:] = torch.zeros_like(trained_initial_frames_input[:, :, 1:])
             
             if image_guidance_scale:
                 trained_initial_frames_input[:trained_initial_frames_input.shape[0]//3] = torch.zeros_like(trained_initial_frames_input[:trained_initial_frames_input.shape[0]//3])
                 trained_initial_frames_input[-trained_initial_frames_input.shape[0]//3:] = torch.zeros_like(trained_initial_frames_input[-trained_initial_frames_input.shape[0]//3:])
+        else:
+            trained_initial_frames_input = None
 
         # Prepare extra step kwargs.
         extra_step_kwargs = self.prepare_extra_step_kwargs(generator, eta)

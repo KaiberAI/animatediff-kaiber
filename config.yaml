@@ -1,12 +1,12 @@
-init_image_thundercat:
+ExampleConfig:
   base: null
   guidance_scale: 15
   init_image: null
   init_image_strength: 0
   init_noise_correlation: 0
   lora_alpha: 1
-  motion_module: <path_to_your_motion_module_here>
-  path: <your_finetuned_sd_model_here>
+  motion_module: models/Motion_Module/mm_sd_v15_v2.ckpt
+  path: models/DreamShaper_8_pruned.safetensors
   n_prompt:
   - "blurry, dof"
   prompt:

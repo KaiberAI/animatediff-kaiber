@@ -246,7 +246,7 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--pretrained_model_path", type=str, default="models/StableDiffusion/",)
-    parser.add_argument("--inference_config",      type=str, default="configs/inference/inference.yaml")    
+    parser.add_argument("--inference_config",      type=str, default="configs/inference/inference-v2.yaml")    
     parser.add_argument("--config",                type=str, required=True)
 
     parser.add_argument("--fp32", action="store_true")
