@@ -1,0 +1,16 @@
+init_image_thundercat:
+  base: null
+  guidance_scale: 15
+  init_image: null
+  init_image_strength: 0
+  init_noise_correlation: 0
+  lora_alpha: 1
+  motion_module: <path_to_your_motion_module_here>
+  path: <your_finetuned_sd_model_here>
+  n_prompt:
+  - "blurry, dof"
+  prompt:
+  - 'a man in the water, in illustrated style, anime, soft lighting, beautiful painting, glowing, painterly strokes'
+  seed:
+  - 1337
+  steps: 35

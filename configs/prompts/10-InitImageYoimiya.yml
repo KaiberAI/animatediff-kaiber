@@ -1,0 +1,18 @@
+InitImageYoimiya:
+  base: 
+  path: "models/DreamBooth_LoRA/DreamShaper_7_pruned.safetensors"
+  init_image:
+
+  motion_module:
+    - "models/Motion_Module/mm_sd_v14.ckpt"
+
+  seed:           [8775748474469046618, 5893874876080607656]
+  steps:          25
+  guidance_scale: 25
+
+  prompt:
+    - "waves on a pirate ship, in the style of anime, makoto shinkai, stunning cinematic masterpiece, best quality" 
+    - "waves on a pirate ship, in the style of anime, makoto shinkai, stunning cinematic masterpiece, best quality" 
+
+  n_prompt:
+    - ""

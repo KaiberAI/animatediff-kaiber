@@ -1,0 +1,15 @@
+
+__pycache__
+*.safetensors
+*.pt
+*.bin
+*.ckpt
+configs/custom_prompts
+configs/inference/train_pexels.yaml
+samples
+models/StableDiffusion
+wandb/*
+wandb
+outputs
+*.out
+data
